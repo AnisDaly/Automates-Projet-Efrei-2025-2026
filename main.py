@@ -150,6 +150,170 @@ def to_str_from_Next(Next, n):
         i3 += 1
     return T
 
+#Fonction pour reconstruire un chemin allant du sommet i au sommet j
+def build_path(Next, i, j):
+    """
+       Reconstruit le chemin allant du sommet i au sommet j sous la forme
+       d’une liste [i, ..., j].
+
+       Paramètres :
+           - Next : matrice des successeurs immédiats calculée par l’algorithme
+                    de Floyd–Warshall. Next[a][b] indique le prochain sommet à
+                    emprunter pour aller de a vers b sur un plus court chemin.
+           - i : sommet de départ
+           - j : sommet d'arrivée
+
+       Principe :
+           Le principe repose sur la matrice Next :
+               - Si Next[i][j] vaut -1 → aucun chemin n'existe : la fonction
+                 renvoie alors une liste vide [].
+               - Sinon, on part du sommet i et on récupère successivement les
+                 successeurs Next[i][j], Next[next][j], etc., jusqu'à atteindre j.
+
+           À chaque étape :
+               - Si un successeur vaut -1, cela signifie qu’un blocage est rencontré
+                 et qu'aucun chemin complet n'existe → on renvoie [].
+               - Sinon, on ajoute le sommet suivant dans la liste 'path'.
+
+           Lorsque le sommet j est atteint, la liste complète du chemin est renvoyée.
+
+       Renvoie :
+           - Une liste contenant tous les sommets du chemin dans l'ordre,
+             par exemple [i, ..., j].
+           - Une liste vide [] s'il n'existe pas de chemin entre i et j.
+       """
+    if Next[i][j] == -1:
+        return []
+    path = [i]
+    while i != j:
+        i = Next[i][j] #i prend la valeur de son sucesseur
+        if i == -1:
+            return []
+        path.append(i) #On ajoute i au chemin
+    return path
+
+def afficher_plus_court_chemin(i, j, D, Next):
+    """Affiche le plus court chemin entre i et j avec son coût.
+
+    Paramètres :
+            - D    : matrice finale des distances après Floyd–Warshall
+            - Next : matrice des successeurs immédiats permettant de reconstruire les chemins
+            - i : sommet de départ
+            - j : sommet d'arrivé
+
+        Principe :
+            Pour chaque paire (i, j), on reconstruit le chemin le plus court
+            en utilisant build_path(Next, i, j).
+
+            - Si build_path renvoie une liste vide → aucun chemin n'existe.
+            - Sinon, on affiche la séquence complète des sommets du chemin,
+              ainsi que son coût final contenu dans D[i][j].
+
+    """
+    path = build_path(Next, i, j) #tableau avec les sommets constituant le chemin du sommet i au sommet j
+    chemin_str = " → ".join(str(x) for x in path)
+    print(f"Plus court chemin {i} → {j} : {chemin_str}")
+    print(f"Coût total = {D[i][j]}") #D : matrice des coûts minimaux
+
+def afficher_tous_les_plus_courts_chemins(D, Next, n):
+    """
+        Affiche tous les plus courts chemins entre chaque couple de sommets (i, j).
+
+        Paramètres :
+            - D    : matrice finale des distances après Floyd–Warshall
+            - Next : matrice des successeurs immédiats permettant de reconstruire les chemins
+            - n    : nombre total de sommets dans le graphe
+
+        Principe :
+            Pour chaque paire (i, j), on reconstruit le chemin le plus court
+            en utilisant build_path(Next, i, j).
+
+            - Si build_path renvoie une liste vide → aucun chemin n'existe.
+            - Sinon, on affiche la séquence complète des sommets du chemin,
+              ainsi que son coût final contenu dans D[i][j].
+        """
+    print("=== Plus courts chemins finaux ===")
+
+    for i in range(n):
+        for j in range(n):
+            path = build_path(Next, i, j) #tableau avec les sommets constituant le chemin du sommet i au sommet j
+            if path == []:
+                print(f"Chemin {i} → {j} : inexistant (X)")
+            else:
+                chemin_str = " → ".join(str(x) for x in path)
+                print(f"Chemin {i} → {j} : {chemin_str}   (coût = {D[i][j]})") #D : matrice des coûts minimaux
+        print()
+
+def affichage_chemins_val_min(D, Next, n):
+    """
+    Interface utilisateur permettant d'afficher les plus courts chemins.
+
+    Paramètres :
+        - D    : matrice des distances minimales calculée par Floyd–Warshall
+        - Next : matrice des successeurs immédiats pour reconstruire les chemins
+        - n    : nombre de sommets du graphe
+
+    Principe :
+        L'utilisateur peut :
+            - choisir d'afficher ou non les chemins ;
+            - afficher tous les chemins du graphe ;
+            - afficher un chemin particulier (i → j) ;
+            - recommencer autant de fois qu'il le souhaite.
+
+        Cette version est optimisée :
+            - moins de boucles imbriquées ;
+            - structure de contrôle simplifiée ;
+            - mêmes fonctionnalités, mais code plus court et plus clair.
+    """
+
+    while True:
+        # Demande initiale : afficher des chemins ou non
+        choix = input("Voulez-vous voir les chemins ? (oui/non)\n").strip().lower()
+
+        if choix == "non":
+            print("\nVous avez choisi de ne pas afficher les chemins.\nÀ bientôt !\n")
+            break
+
+        elif choix != "oui":
+            print("\nMauvaise saisie, veuillez répondre par 'oui' ou 'non'.\n")
+            continue
+
+        # L'utilisateur veut afficher les chemins
+        while True:
+            mode = input(
+                "Saisir (1) pour tous les chemins, (2) pour un chemin particulier\n"
+            ).strip()
+
+            if mode == "1":
+                print("\nAffichage de tous les chemins :\n")
+                afficher_tous_les_plus_courts_chemins(D, Next, n)
+                break
+
+            elif mode == "2":
+                print("\nChemin particulier :")
+                try:
+                    i = int(input(" ➜ Saisir le sommet de départ : "))
+                    j = int(input(" ➜ Saisir le sommet d'arrivée : "))
+
+                    afficher_plus_court_chemin(i, j, D, Next)
+                    break
+
+                except ValueError:
+                    print("\nErreur : veuillez saisir uniquement des entiers valides.\n")
+
+            else:
+                print("\nMauvaise valeur saisie, veuillez recommencer.\n")
+
+        # Demande si l'utilisateur veut recommencer
+        recommencer = input("\nVoulez-vous recommencer ? (oui/non)\n").strip().lower()
+
+        if recommencer == "non":
+            print("\nVous avez choisi de ne pas continuer.\nMerci et à bientôt !\n")
+            break
+
+        elif recommencer != "oui":
+            print("\nRéponse invalide, arrêt de l'interface.\n")
+            break
 
 # ============================
 # 4) Traitement de chaque graphe sélectionné
@@ -283,7 +447,12 @@ while r < len(idxs):
     if neg:
         print("Circuit absorbant détecté")
     else:
-        print("Pas de circuit absorbant")
+        print("Pas de circuit absorbant\n")
+        """
+        Aucun circuit absorbant n'est présent, le dernier traitement consiste donc à afficher 
+        les chemins de valeurs minimales, interface d'utilisation pour les afficher selon nos envies
+        """
+        affichage_chemins_val_min(D, Next, n)
 
     print()
     r += 1
