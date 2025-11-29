@@ -1,0 +1,236 @@
+=== graphe7.txt ===
+Étape 1 — W (arcs)
+    0    1    2    3    4    5    6
+0   0    2   -5    X    X    X    X
+1   X    3   -3    3    X    X    X
+2   7    4    0    3    X    X    X
+3   X    X    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 2 — L (distances) — initial (D^0)
+    0    1    2    3    4    5    6
+0   0    2   -5    X    X    X    X
+1   X    3   -3    3    X    X    X
+2   7    4    0    3    X    X    X
+3   X    X    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 3 — P (successeurs) — initial (P^0)
+   0   1   2   3   4   5   6
+0  0   1   2   X   X   X   X
+1  X   1   2   3   X   X   X
+2  0   1   2   3   X   X   X
+3  X   X   2   3   X   X   X
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 4 — L (distances) — k = 0
+    0    1    2    3    4    5    6
+0   0    2   -5    X    X    X    X
+1   X    3   -3    3    X    X    X
+2   7    4    0    3    X    X    X
+3   X    X    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 5 — P (successeurs) — k = 0
+   0   1   2   3   4   5   6
+0  0   1   2   X   X   X   X
+1  X   1   2   3   X   X   X
+2  0   1   2   3   X   X   X
+3  X   X   2   3   X   X   X
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 6 — L (distances) — k = 1
+    0    1    2    3    4    5    6
+0   0    2   -5    5    X    X    X
+1   X    3   -3    3    X    X    X
+2   7    4    0    3    X    X    X
+3   X    X    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 7 — P (successeurs) — k = 1
+   0   1   2   3   4   5   6
+0  0   1   2   1   X   X   X
+1  X   1   2   3   X   X   X
+2  0   1   2   3   X   X   X
+3  X   X   2   3   X   X   X
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 8 — L (distances) — k = 2
+    0    1    2    3    4    5    6
+0   0   -1   -5   -2    X    X    X
+1   4    1   -3    0    X    X    X
+2   7    4    0    3    X    X    X
+3   9    6    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 9 — P (successeurs) — k = 2
+   0   1   2   3   4   5   6
+0  0   2   2   2   X   X   X
+1  2   2   2   2   X   X   X
+2  0   1   2   3   X   X   X
+3  2   2   2   3   X   X   X
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 10 — L (distances) — k = 3
+    0    1    2    3    4    5    6
+0   0   -1   -5   -2    X    X    X
+1   4    1   -3    0    X    X    X
+2   7    4    0    3    X    X    X
+3   9    6    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 11 — P (successeurs) — k = 3
+   0   1   2   3   4   5   6
+0  0   2   2   2   X   X   X
+1  2   2   2   2   X   X   X
+2  0   1   2   3   X   X   X
+3  2   2   2   3   X   X   X
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 12 — L (distances) — k = 4
+    0    1    2    3    4    5    6
+0   0   -1   -5   -2    X    X    X
+1   4    1   -3    0    X    X    X
+2   7    4    0    3    X    X    X
+3   9    6    2    0    X    X    X
+4   X    X    X    X    0    5    X
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 13 — P (successeurs) — k = 4
+   0   1   2   3   4   5   6
+0  0   2   2   2   X   X   X
+1  2   2   2   2   X   X   X
+2  0   1   2   3   X   X   X
+3  2   2   2   3   X   X   X 
+4  X   X   X   X   4   5   X
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 14 — L (distances) — k = 5
+    0    1    2    3    4    5    6
+0   0   -1   -5   -2    X    X    X
+1   4    1   -3    0    X    X    X
+2   7    4    0    3    X    X    X
+3   9    6    2    0    X    X    X
+4   X    X    X    X    0    5    3
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 15 — P (successeurs) — k = 5
+   0   1   2   3   4   5   6
+0  0   2   2   2   X   X   X
+1  2   2   2   2   X   X   X
+2  0   1   2   3   X   X   X
+3  2   2   2   3   X   X   X
+4  X   X   X   X   4   5   5
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Étape 16 — L (distances) — k = 6
+    0    1    2    3    4    5    6
+0   0   -1   -5   -2    X    X    X
+1   4    1   -3    0    X    X    X
+2   7    4    0    3    X    X    X
+3   9    6    2    0    X    X    X
+4   X    X    X    X    0    5    3
+5   X    X    X    X    2    0   -2
+6   X    X    X    X    X    X    0
+
+Étape 17 — P (successeurs) — k = 6
+   0   1   2   3   4   5   6
+0  0   2   2   2   X   X   X
+1  2   2   2   2   X   X   X
+2  0   1   2   3   X   X   X
+3  2   2   2   3   X   X   X
+4  X   X   X   X   4   5   5
+5  X   X   X   X   4   5   6
+6  X   X   X   X   X   X   6
+
+Pas de circuit absorbant
+
+Voulez-vous voir les chemins ? (oui/non)
+oui
+Saisir (1) pour tous les chemins, (2) pour un chemin particulier
+1
+
+Affichage de tous les chemins :
+
+=== Plus courts chemins finaux ===
+Chemin 0 → 0 : 0   (coût = 0)
+Chemin 0 → 1 : 0 → 2 → 1   (coût = -1)
+Chemin 0 → 2 : 0 → 2   (coût = -5)
+Chemin 0 → 3 : 0 → 2 → 3   (coût = -2)
+Chemin 0 → 4 : inexistant (X)
+Chemin 0 → 5 : inexistant (X)
+Chemin 0 → 6 : inexistant (X)
+
+Chemin 1 → 0 : 1 → 2 → 0   (coût = 4)
+Chemin 1 → 1 : 1   (coût = 1)
+Chemin 1 → 2 : 1 → 2   (coût = -3)
+Chemin 1 → 3 : 1 → 2 → 3   (coût = 0)
+Chemin 1 → 4 : inexistant (X)
+Chemin 1 → 5 : inexistant (X)
+Chemin 1 → 6 : inexistant (X)
+
+Chemin 2 → 0 : 2 → 0   (coût = 7)
+Chemin 2 → 1 : 2 → 1   (coût = 4)
+Chemin 2 → 2 : 2   (coût = 0)
+Chemin 2 → 3 : 2 → 3   (coût = 3)
+Chemin 2 → 4 : inexistant (X)
+Chemin 2 → 5 : inexistant (X)
+Chemin 2 → 6 : inexistant (X)
+
+Chemin 3 → 0 : 3 → 2 → 0   (coût = 9)
+Chemin 3 → 1 : 3 → 2 → 1   (coût = 6)
+Chemin 3 → 2 : 3 → 2   (coût = 2)
+Chemin 3 → 3 : 3   (coût = 0)
+Chemin 3 → 4 : inexistant (X)
+Chemin 3 → 5 : inexistant (X)
+Chemin 3 → 6 : inexistant (X)
+
+Chemin 4 → 0 : inexistant (X)
+Chemin 4 → 1 : inexistant (X)
+Chemin 4 → 2 : inexistant (X)
+Chemin 4 → 3 : inexistant (X)
+Chemin 4 → 4 : 4   (coût = 0)
+Chemin 4 → 5 : 4 → 5   (coût = 5)
+Chemin 4 → 6 : 4 → 5 → 6   (coût = 3)
+
+Chemin 5 → 0 : inexistant (X)
+Chemin 5 → 1 : inexistant (X)
+Chemin 5 → 2 : inexistant (X)
+Chemin 5 → 3 : inexistant (X)
+Chemin 5 → 4 : 5 → 4   (coût = 2)
+Chemin 5 → 5 : 5   (coût = 0)
+Chemin 5 → 6 : 5 → 6   (coût = -2)
+
+Chemin 6 → 0 : inexistant (X)
+Chemin 6 → 1 : inexistant (X)
+Chemin 6 → 2 : inexistant (X)
+Chemin 6 → 3 : inexistant (X)
+Chemin 6 → 4 : inexistant (X)
+Chemin 6 → 5 : inexistant (X)
+Chemin 6 → 6 : 6   (coût = 0)

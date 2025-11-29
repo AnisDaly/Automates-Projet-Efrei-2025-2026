@@ -1,0 +1,79 @@
+=== graphe6.txt ===
+Étape 1 — W (arcs)
+    0    1    2    3
+0   0    1   -5    X
+1   X   -1   -3    2
+2   6    4    0    2
+3   X    X    2    0
+
+Étape 2 — L (distances) — initial (D^0)
+    0    1    2    3
+0   0    1   -5    X
+1   X   -1   -3    2
+2   6    4    0    2
+3   X    X    2    0
+
+Étape 3 — P (successeurs) — initial (P^0)
+   0   1   2   3
+0  0   1   2   X
+1  X   1   2   3
+2  0   1   2   3
+3  X   X   2   3
+
+Étape 4 — L (distances) — k = 0
+    0    1    2    3
+0   0    1   -5    X
+1   X   -1   -3    2
+2   6    4    0    2
+3   X    X    2    0
+
+Étape 5 — P (successeurs) — k = 0
+   0   1   2   3
+0  0   1   2   X
+1  X   1   2   3
+2  0   1   2   3
+3  X   X   2   3
+
+Étape 6 — L (distances) — k = 1
+    0    1    2    3
+0   0    0   -5    2
+1   X   -2   -5    0
+2   6    2   -3    2
+3   X    X    2    0
+
+Étape 7 — P (successeurs) — k = 1
+   0   1   2   3
+0  0   1   2   1
+1  X   1   1   1
+2  0   1   1   3
+3  X   X   2   3
+
+Étape 8 — L (distances) — k = 2
+    0    1    2    3
+0   0   -3   -8   -6
+1   1   -3   -8   -6
+2   3   -1   -6   -4
+3   5    1   -4   -8
+
+Étape 9 — P (successeurs) — k = 2
+   0   1   2   3
+0  0   2   2   2
+1  1   1   1   1
+2  1   1   1   1
+3  2   2   2   2
+
+Étape 10 — L (distances) — k = 3
+     0     1     2     3
+0   -1    -5   -10   -14
+1   -1    -5   -10   -14
+2    1    -3    -8   -12
+3   -3    -7   -12   -16
+
+Étape 11 — P (successeurs) — k = 3
+   0   1   2   3
+0  2   2   2   2
+1  1   1   1   1
+2  1   1   1   1
+3  2   2   2   2
+
+Circuit absorbant détecté
